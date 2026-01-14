@@ -60,13 +60,19 @@ export default function EliteHeritageServicesLight() {
                 transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
                 className="relative w-full md:w-[55%] group"
               >
-                <div className="relative aspect-[4/5] md:aspect-[16/11] overflow-hidden border border-black/5 bg-gray-100 shadow-sm">
-                  <img 
-                    src={service.image} 
-                    alt={service.title}
-                    className="w-full h-full object-cover grayscale brightness-95 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-1000 ease-in-out"
-                  />
-                </div>
+{/* Image Container Refinement */}
+<div className="relative aspect-[4/5] md:aspect-[16/11] overflow-hidden border border-black/5 bg-gray-100 shadow-sm">
+  <motion.img 
+    whileHover={{ scale: 1.05 }}
+    transition={{ duration: 1.5, ease: [0.33, 1, 0.68, 1] }}
+    src={service.image} 
+    alt={service.title}
+    className="w-full h-full object-cover transition-all duration-1000 ease-in-out
+               grayscale-0 brightness-100 
+               md:grayscale md:brightness-95 
+               md:group-hover:grayscale-0 md:group-hover:brightness-100"
+  />
+</div>
               </motion.div>
 
               {/* Text Content */}

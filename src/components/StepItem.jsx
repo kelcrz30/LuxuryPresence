@@ -26,11 +26,12 @@ const StepItem = ({ item, index }) => {
         className={`md:col-span-5 mb-8 md:mb-0 ${isEven ? 'md:order-1' : 'md:order-2 md:col-start-8'}`}
       >
         <div className="overflow-hidden rounded-sm bg-gray-100 shadow-xl">
-          <img 
-            src={item.img} 
-            className='w-full grayscale hover:grayscale-0 transition-all duration-1000 object-cover aspect-[4/3] hover:scale-105' 
-            alt={item.title} 
-          />
+<img 
+  src={item.img} 
+  className='w-full transition-all duration-1000 object-cover aspect-[4/3] 
+             grayscale-0 md:grayscale md:hover:grayscale-0 md:hover:scale-105' 
+  alt={item.title} 
+/>
         </div>
       </motion.div>
 
