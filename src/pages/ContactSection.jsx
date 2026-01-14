@@ -96,36 +96,70 @@ export default function NoirRealEstateContact() {
           </div>
 
           {/* RIGHT COLUMN (FORM) */}
-          <div className="lg:col-span-7">
-            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1.2 }} className="relative p-1 border-t border-l border-white/10">
-              <div className="space-y-16 p-8 md:p-12 bg-[#1c1c1c]/50 backdrop-blur-sm">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-                  <div className="flex flex-col gap-4">
-                    <label className="text-[8px] uppercase tracking-[0.4em] font-black text-stone-500">Identity</label>
-                    <input type="text" className="bg-transparent border-b border-white/5 py-4 outline-none focus:border-white transition-all text-sm placeholder:text-white/10" placeholder="Full Name" />
-                  </div>
-                  <div className="flex flex-col gap-4">
-                    <label className="text-[8px] uppercase tracking-[0.4em] font-black text-stone-500">Communication</label>
-                    <input type="email" className="bg-transparent border-b border-white/5 py-4 outline-none focus:border-white transition-all text-sm placeholder:text-white/10" placeholder="Email Address" />
-                  </div>
-                </div>
-                <div className="flex flex-col gap-4">
-                  <label className="text-[8px] uppercase tracking-[0.4em] font-black text-stone-500">Brief</label>
-                  <textarea rows="3" className="bg-transparent border-b border-white/5 py-4 outline-none focus:border-white transition-all text-sm placeholder:text-white/10 resize-none" placeholder="Project Details" />
-                </div>
-                <div className="pt-10 flex flex-col md:flex-row items-center gap-12">
-                  <button onClick={handleSubmit} className="w-full md:w-auto flex items-center justify-center gap-8 bg-white text-black px-16 py-6 hover:bg-[#222] hover:text-white transition-all group">
-                    <span className="text-[10px] uppercase tracking-[0.5em] font-black">Submit</span>
-                    <FaArrowRight className="text-xs group-hover:translate-x-3 transition-transform duration-500" />
-                  </button>
-                  <a href="https://wa.me/12069196886" className="flex items-center gap-3 text-[9px] font-bold uppercase tracking-[0.4em] text-stone-500 hover:text-white transition-all">
-                    <FaWhatsapp className="text-lg" />
-                    WhatsApp Direct
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-          </div>
+{/* RIGHT COLUMN (FORM) */}
+<div className="lg:col-span-7">
+  <motion.div 
+    initial={{ opacity: 0 }} 
+    whileInView={{ opacity: 1 }} 
+    transition={{ duration: 1.2 }} 
+    className="relative group"
+  >
+    {/* Decorative Border - Absolute positioned to avoid layout shifts */}
+    <div className="absolute -top-4 -left-4 w-12 h-12 border-t border-l border-white/20 hidden md:block" />
+    
+    <div className="space-y-12 md:space-y-16 p-6 md:p-12 bg-[#1c1c1c]/40 backdrop-blur-md border border-white/5 relative">
+      
+      {/* Input Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
+        <div className="flex flex-col gap-3">
+          <label className="text-[8px] uppercase tracking-[0.4em] font-black text-stone-500">Identity</label>
+          <input 
+            type="text" 
+            className="bg-transparent border-b border-white/10 py-3 outline-none focus:border-white transition-all text-sm placeholder:text-white/5" 
+            placeholder="Full Name" 
+          />
+        </div>
+        <div className="flex flex-col gap-3">
+          <label className="text-[8px] uppercase tracking-[0.4em] font-black text-stone-500">Communication</label>
+          <input 
+            type="email" 
+            className="bg-transparent border-b border-white/10 py-3 outline-none focus:border-white transition-all text-sm placeholder:text-white/5" 
+            placeholder="Email Address" 
+          />
+        </div>
+      </div>
+
+      {/* Textarea */}
+      <div className="flex flex-col gap-3">
+        <label className="text-[8px] uppercase tracking-[0.4em] font-black text-stone-500">Brief</label>
+        <textarea 
+          rows="3" 
+          className="bg-transparent border-b border-white/10 py-3 outline-none focus:border-white transition-all text-sm placeholder:text-white/5 resize-none" 
+          placeholder="Project Details" 
+        />
+      </div>
+
+      {/* Action Row */}
+      <div className="pt-6 md:pt-10 flex flex-col sm:flex-row items-center gap-8 md:gap-12">
+        <button 
+          onClick={handleSubmit} 
+          className="w-full sm:w-auto flex items-center justify-center gap-8 bg-white text-black px-12 md:px-16 py-5 md:py-6 hover:bg-stone-200 transition-all group overflow-hidden"
+        >
+          <span className="text-[10px] uppercase tracking-[0.5em] font-black">Submit</span>
+          <FaArrowRight className="text-xs group-hover:translate-x-2 transition-transform duration-500" />
+        </button>
+        
+        <a 
+          href="https://wa.me/12069196886" 
+          className="flex items-center gap-3 text-[9px] font-bold uppercase tracking-[0.4em] text-stone-400 hover:text-white transition-all"
+        >
+          <FaWhatsapp className="text-lg text-green-500/50 group-hover:text-green-500" />
+          WhatsApp Direct
+        </a>
+      </div>
+    </div>
+  </motion.div>
+</div>
         </div>
 
         {/* --- WORKING GOOGLE MAP --- */}

@@ -21,7 +21,7 @@ export const Header = () => {
     <>
       {/* Header Wrapper - z-[100] to stay above the overlay */}
       <nav className={`w-full fixed top-0 left-0 right-0 z-[100] transition-all duration-700 ${
-        isScrolled && !isOpen ? 'bg-white/95 backdrop-blur-md border-b border-stone-200' : 'bg-transparent'
+        isScrolled && !isOpen ? 'bg-white/95 backdrop-blur-md  border-stone-200' : 'bg-transparent'
       }`}> 
         <div className={`flex items-center justify-between max-w-[1800px] mx-auto px-6 md:px-12 transition-all duration-500 ${isScrolled ? 'py-4' : 'py-8'}`}>
           
