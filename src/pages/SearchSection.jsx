@@ -1,5 +1,6 @@
 // src/components/SearchSection.jsx
 import { useMemo, useState } from "react";
+import { FiSearch, FiRotateCcw } from "react-icons/fi";
 
 const SearchSection = ({ onSearch }) => {
   const [form, setForm] = useState({
@@ -12,223 +13,153 @@ const SearchSection = ({ onSearch }) => {
     maxPrice: "",
   });
 
-  const locations = useMemo(
-    () => ["Any Area", "Quezon City", "Makati", "BGC", "Pasig", "Cebu", "Davao"],
-    []
-  );
+  const locations = useMemo(() => ["Any Area", "Quezon City", "Makati", "BGC", "Pasig", "Cebu", "Davao"], []);
+  const propertyTypes = useMemo(() => ["Any", "Condo", "House", "Townhouse", "Lot", "Commercial"], []);
+  const sortOptions = useMemo(() => [
+    { label: "Newest", value: "newest" },
+    { label: "Price: Low to High", value: "price_asc" },
+    { label: "Price: High to Low", value: "price_desc" },
+    { label: "Beds: Most", value: "beds_desc" },
+  ], []);
+  const numberOptions = useMemo(() => ["Any", "1+", "2+", "3+", "4+", "5+"], []);
 
-  const propertyTypes = useMemo(
-    () => ["Any", "Condo", "House", "Townhouse", "Lot", "Commercial"],
-    []
-  );
-
-  const sortOptions = useMemo(
-    () => [
-      { label: "Newest", value: "newest" },
-      { label: "Price: Low to High", value: "price_asc" },
-      { label: "Price: High to Low", value: "price_desc" },
-      { label: "Beds: Most", value: "beds_desc" },
-    ],
-    []
-  );
-
-  const numberOptions = useMemo(
-    () => ["Any", "1+", "2+", "3+", "4+", "5+"],
-    []
-  );
-
-  const update = (key) => (e) =>
-    setForm((prev) => ({ ...prev, [key]: e.target.value }));
+  const update = (key) => (e) => setForm((prev) => ({ ...prev, [key]: e.target.value }));
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const min = form.minPrice ? Number(form.minPrice) : null;
-    const max = form.maxPrice ? Number(form.maxPrice) : null;
-
-    if (min !== null && max !== null && min > max) {
-      alert("Min price cannot be higher than max price.");
-      return;
-    }
     if (onSearch) onSearch(form);
-    else console.log("Search payload:", form);
   };
 
   return (
-    <section className="relative overflow-hidden">
-
+    <section className="relative overflow-hidden min-h-[650px] flex items-center">
+      {/* Background Image & Solid Overlay */}
       <div className="absolute inset-0">
         <img
           src="https://img1.wsimg.com/isteam/stock/143/:/rs=w:1534,m"
-          alt="Home background"
+          alt="Luxury Home"
           className="h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-black/60" />
+        <div className="absolute inset-0 bg-black/50" />
       </div>
 
-      <div className="relative mx-auto max-w-6xl px-4 py-16 sm:py-20">
-        <div className="text-center text-white">
-
-          <h2 className="mt-5 text-3xl font-semibold tracking-tight sm:text-4xl">
-            Find a place that fits your life
+      <div className="relative mx-auto max-w-6xl px-4 py-16 sm:py-24 w-full">
+        <div className="text-center text-white mb-10">
+          <h2 className="text-3xl md:text-5xl font-serif font-light tracking-tight italic">
+            Find a place that <span className="not-italic font-bold">fits your life</span>
           </h2>
-
-          <p className="mx-auto mt-3 max-w-2xl text-sm text-white/80 sm:text-base">
-            Search by location, type, bedrooms, and price. Then sort results the
-            way you want.
+          <p className="mx-auto mt-4 max-w-2xl text-sm md:text-base text-white/90 font-light">
+            Search by location, type, bedrooms, and price to find your next home.
           </p>
         </div>
 
+        {/* SOLID DESIGN FORM */}
         <form
           onSubmit={handleSubmit}
-          className="mx-auto mt-10 rounded-2xl border border-white/10 bg-white/95 p-4 shadow-2xl backdrop-blur sm:p-6"
+          className="mx-auto rounded-xl bg-white p-5 shadow-2xl md:p-8"
         >
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-12">
-
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-12">
+            
+            {/* Row 1: Location, Type, Sort */}
             <div className="md:col-span-4">
-              <label className="text-xs font-semibold text-slate-700">
-                Location
-              </label>
+              <label className="text-[11px] uppercase tracking-wider font-bold text-slate-500 mb-1.5 block">Location</label>
               <select
                 value={form.location}
                 onChange={update("location")}
-                className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-3 text-sm text-slate-800 outline-none transition focus:border-slate-400 focus:ring-2 focus:ring-slate-200"
+                className="w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-800 outline-none focus:border-slate-400 focus:bg-white transition-all"
               >
                 {locations.map((loc) => (
-                  <option key={loc} value={loc === "Any Area" ? "" : loc}>
-                    {loc}
-                  </option>
+                  <option key={loc} value={loc === "Any Area" ? "" : loc}>{loc}</option>
                 ))}
               </select>
             </div>
 
-            <div className="md:col-span-3">
-              <label className="text-xs font-semibold text-slate-700">
-                Property Type
-              </label>
+            <div className="md:col-span-4">
+              <label className="text-[11px] uppercase tracking-wider font-bold text-slate-500 mb-1.5 block">Property Type</label>
               <select
                 value={form.propertyType}
                 onChange={update("propertyType")}
-                className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-3 text-sm text-slate-800 outline-none transition focus:border-slate-400 focus:ring-2 focus:ring-slate-200"
+                className="w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-800 outline-none focus:border-slate-400 focus:bg-white transition-all"
               >
                 {propertyTypes.map((t) => (
-                  <option key={t} value={t.toLowerCase()}>
-                    {t}
-                  </option>
+                  <option key={t} value={t.toLowerCase()}>{t}</option>
                 ))}
               </select>
             </div>
 
-            <div className="md:col-span-3">
-              <label className="text-xs font-semibold text-slate-700">
-                Sort By
-              </label>
+            <div className="md:col-span-4">
+              <label className="text-[11px] uppercase tracking-wider font-bold text-slate-500 mb-1.5 block">Sort By</label>
               <select
                 value={form.sortBy}
                 onChange={update("sortBy")}
-                className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-3 text-sm text-slate-800 outline-none transition focus:border-slate-400 focus:ring-2 focus:ring-slate-200"
+                className="w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-800 outline-none focus:border-slate-400 focus:bg-white transition-all"
               >
                 {sortOptions.map((opt) => (
-                  <option key={opt.value} value={opt.value}>
-                    {opt.label}
-                  </option>
+                  <option key={opt.value} value={opt.value}>{opt.label}</option>
                 ))}
               </select>
             </div>
 
-            <div className="md:col-span-2">
-              <label className="text-xs font-semibold text-transparent">
-                Search
-              </label>
-              <button
-                type="submit"
-                className="mt-2 w-full rounded-xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-900/20 transition hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-300"
-              >
-                Search
-              </button>
-            </div>
-
-            <div className="md:col-span-3">
-              <label className="text-xs font-semibold text-slate-700">
-                Bedrooms
-              </label>
+            {/* Row 2: Beds, Baths, Price Range */}
+            <div className="col-span-1 md:col-span-2">
+              <label className="text-[11px] uppercase tracking-wider font-bold text-slate-500 mb-1.5 block">Beds</label>
               <select
                 value={form.beds}
                 onChange={update("beds")}
-                className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-3 text-sm text-slate-800 outline-none transition focus:border-slate-400 focus:ring-2 focus:ring-slate-200"
+                className="w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-800 outline-none"
               >
-                {numberOptions.map((n) => (
-                  <option key={n} value={n.toLowerCase()}>
-                    {n}
-                  </option>
-                ))}
+                {numberOptions.map((n) => <option key={n} value={n.toLowerCase()}>{n}</option>)}
               </select>
             </div>
 
-            <div className="md:col-span-3">
-              <label className="text-xs font-semibold text-slate-700">
-                Bathrooms
-              </label>
+            <div className="col-span-1 md:col-span-2">
+              <label className="text-[11px] uppercase tracking-wider font-bold text-slate-500 mb-1.5 block">Baths</label>
               <select
                 value={form.baths}
                 onChange={update("baths")}
-                className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-3 text-sm text-slate-800 outline-none transition focus:border-slate-400 focus:ring-2 focus:ring-slate-200"
+                className="w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-800 outline-none"
               >
-                {numberOptions.map((n) => (
-                  <option key={n} value={n.toLowerCase()}>
-                    {n}
-                  </option>
-                ))}
+                {numberOptions.map((n) => <option key={n} value={n.toLowerCase()}>{n}</option>)}
               </select>
             </div>
 
-            <div className="md:col-span-3">
-              <label className="text-xs font-semibold text-slate-700">
-                Min Price
-              </label>
+            <div className="md:col-span-4">
+              <label className="text-[11px] uppercase tracking-wider font-bold text-slate-500 mb-1.5 block">Min Price</label>
               <input
                 value={form.minPrice}
                 onChange={update("minPrice")}
                 inputMode="numeric"
-                placeholder="e.g. 50000"
-                className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-3 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-slate-400 focus:ring-2 focus:ring-slate-200"
+                placeholder="e.g. 50,000"
+                className="w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-800 outline-none placeholder:text-slate-300 focus:bg-white"
               />
             </div>
-            <div className="md:col-span-3">
-              <label className="text-xs font-semibold text-slate-700">
-                Max Price
-              </label>
+
+            <div className="md:col-span-4">
+              <label className="text-[11px] uppercase tracking-wider font-bold text-slate-500 mb-1.5 block">Max Price</label>
               <input
                 value={form.maxPrice}
                 onChange={update("maxPrice")}
                 inputMode="numeric"
-                placeholder="e.g. 250000"
-                className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-3 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-slate-400 focus:ring-2 focus:ring-slate-200"
+                placeholder="e.g. 250,000"
+                className="w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-800 outline-none placeholder:text-slate-300 focus:bg-white"
               />
             </div>
           </div>
 
-          <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-600">
-            <p className="opacity-80">
-              Tip: leave fields blank to broaden your results.
-            </p>
-
+          {/* Footer Row */}
+          <div className="mt-8 flex flex-col md:flex-row items-center justify-between gap-6 border-t border-slate-100 pt-6">
             <button
               type="button"
-              onClick={() =>
-                setForm({
-                  location: "",
-                  propertyType: "any",
-                  sortBy: "newest",
-                  beds: "any",
-                  baths: "any",
-                  minPrice: "",
-                  maxPrice: "",
-                })
-              }
-              className="rounded-lg px-3 py-2 font-semibold text-slate-700 transition hover:bg-slate-100"
+              onClick={() => setForm({ location: "", propertyType: "any", sortBy: "newest", beds: "any", baths: "any", minPrice: "", maxPrice: "" })}
+              className="text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-colors flex items-center gap-2"
             >
-              Reset filters
+              <FiRotateCcw /> Reset Filters
+            </button>
+
+            <button
+              type="submit"
+              className="w-full md:w-auto flex items-center justify-center gap-3 rounded-lg bg-slate-900 px-10 py-4 text-xs font-bold uppercase tracking-widest text-white transition hover:bg-black active:scale-[0.98] shadow-lg shadow-slate-200"
+            >
+              <FiSearch className="text-base" /> Search Properties
             </button>
           </div>
         </form>
