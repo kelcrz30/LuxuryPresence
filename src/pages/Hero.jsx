@@ -25,7 +25,7 @@ export const Hero = () => {
   }, [])
  
   return (
-    <div ref={heroRef} className='min-h-screen bg-gray-50 pt-8 pt-40 pb-8 px-8 relative'>
+    <div ref={heroRef} className='min-h-screen bg-gray-50 pt-31 pb-8 px-2 md:px-8 relative'>
 
       <div 
         className={`relative h-[600px] md:h-[700px] rounded-[40px] overflow-hidden transition-all duration-1000 ${

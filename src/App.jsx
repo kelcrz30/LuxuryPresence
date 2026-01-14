@@ -3,7 +3,10 @@ import { Header } from './pages/Header'
 import { Hero } from './pages/Hero'
 import About from './pages/About'
 import ProcessList from './pages/ProcessList'
-
+import SearchSection from './pages/SearchSection'
+import Logo from './pages/Logo'
+import PhotoGallery from './pages/PhotoGallery'
+import Services from './pages/Services'
 
 function App() {
   return (
@@ -12,6 +15,11 @@ function App() {
       <Hero/>
       <About/>
       <ProcessList/>
+      <SearchSection/>
+      <Logo/>
+      <PhotoGallery/>
+      
+      <Services/>
     </div>
   )
 }

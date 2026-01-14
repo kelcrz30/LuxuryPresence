@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const About = () => {
   return (
-    <section className="w-full bg-[#181818] text-white py-24 px-8 border-y border-white/10">
+    <section className=" w-full bg-[#181818] text-white py-15 px-8 border-y border-white/10">
       <div className="max-w-5xl mx-auto flex flex-col items-center text-center">
         
         {/* Minimalist Circular Image */}
@@ -31,7 +31,7 @@ const About = () => {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
         >
-          <h2 className="text-3xl md:text-5xl font-light tracking-[0.2em] uppercase">
+          <h2 className="text-3xl md:text-4xl font-light tracking-[0.2em] uppercase">
             Marci Metzger
           </h2>
           

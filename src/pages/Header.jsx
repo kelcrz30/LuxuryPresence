@@ -27,7 +27,7 @@ export const Header = () => {
             src="https://img1.wsimg.com/isteam/ip/067a4d42-19e8-46d9-9bed-578bf62dd44e/blob-6c0c2e0.png/:/rs=w:536,h:167,cg:true,m/cr=w:536,h:167/qt=q:95" 
             alt="Logo" 
             className={`h-auto object-contain transition-all duration-300 ${
-              isScrolled ? 'w-44' : 'w-56'
+              isScrolled ? 'w-40' : 'w-44'
             }`} 
           />
 
