@@ -1,68 +1,60 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const About = () => {
+const AboutBanner = () => {
   return (
-    <section className=" w-full bg-[#181818] text-white py-15 px-8 border-y border-white/10">
-      <div className="max-w-5xl mx-auto flex flex-col items-center text-center">
+    <section className="w-full bg-[#181818] text-white py-12 md:py-20 border-y border-white/10">
+      <div className="max-w-[1400px] mx-auto px-8">
         
-        {/* Minimalist Circular Image */}
-        <motion.div 
-          className="mb-10"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          <div className="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden">
-            <img 
-              src="//img1.wsimg.com/isteam/ip/067a4d42-19e8-46d9-9bed-578bf62dd44e/photo-5db79f9.jpg/:/cr=t:14.65%25,l:0%25,w:100%25,h:66.64%25/rs=w:365,h:365,cg:true" 
-              alt="Marci Metzger" 
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </motion.div>
-
-        {/* Essential Content Only */}
-        <motion.div 
-          className="space-y-4"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-        >
-          <h2 className="text-3xl md:text-4xl font-light tracking-[0.2em] uppercase">
-            Marci Metzger
-          </h2>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           
-          <p className="text-gray-300/70 uppercase tracking-[0.4em] italic text-[10px] md:text-xs">
-            Realtor for nearly 3 decades
-          </p>
-          
-          <div className="py-8">
-            <div className="h-[1px] w-12 bg-white/30 mx-auto"></div>
-          </div>
-
-          <div className="flex flex-col items-center gap-6">
-            <a 
-              href="tel:206-919-6886"
-              className="text-white text-lg font-light tracking-[0.15em] hover:text-gray-400 transition-colors"
+          {/* --- PROFILE COMPONENT --- */}
+          <div className="flex items-center gap-8">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              className="w-24 h-24 md:w-32 md:h-32 bg-neutral-900 overflow-hidden"
             >
+              <img 
+                src="//img1.wsimg.com/isteam/ip/067a4d42-19e8-46d9-9bed-578bf62dd44e/photo-5db79f9.jpg/:/cr=t:14.65%25,l:0%25,w:100%25,h:66.64%25/rs=w:365,h:365,cg:true" 
+                alt="Marci Metzger" 
+                className="w-full h-full object-cover grayscale brightness-90 contrast-110"
+              />
+            </motion.div>
+            
+            <div className="space-y-1">
+              <h2 className="text-2xl md:text-3xl font-serif tracking-tight">Marci Metzger</h2>
+              <p className="text-[10px] uppercase tracking-[0.4em] text-white/30 font-bold">The Ridge Realty Group</p>
+            </div>
+          </div>
+
+          {/* --- CONTENT SLIVER --- */}
+          <div className="hidden lg:block w-[1px] h-16 bg-white/10" />
+
+          <div className="max-w-md">
+            <p className="text-sm md:text-base font-light leading-relaxed text-white/50 text-center md:text-left">
+              Established representation in Nevada for <span className="text-white">three decades.</span> Specializing in luxury acquisitions and high-value estates with total discretion.
+            </p>
+          </div>
+
+          {/* --- ACTION SLIVER --- */}
+          <div className="flex flex-col items-center md:items-end gap-3">
+            <a href="tel:2069196886" className="text-xl font-light tracking-tighter hover:text-white/40 transition-all">
               206.919.6886
             </a>
-            
             <a 
-              href="tel:206-919-6886"
-              className="mt-4 px-12 py-3 border border-white/20 text-[10px] rounded-full uppercase tracking-[0.5em] hover:bg-white hover:text-black transition-all duration-300"
+              href="#contact" 
+              className="group flex items-center gap-4 text-[9px] uppercase tracking-[0.5em] text-white/40 hover:text-white transition-all"
             >
-              Contact
+              Contact 
+              <span className="w-8 h-[1px] bg-white/20 group-hover:w-12 group-hover:bg-white transition-all duration-500" />
             </a>
           </div>
-        </motion.div>
 
+        </div>
       </div>
     </section>
   );
 };
 
-export default About;
+export default AboutBanner;

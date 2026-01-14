@@ -7,6 +7,8 @@ import SearchSection from './pages/SearchSection'
 import Logo from './pages/Logo'
 import PhotoGallery from './pages/PhotoGallery'
 import Services from './pages/Services'
+import ContactSection from './pages/ContactSection'
+import LuxuryFooter from './pages/Footer'
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
       <PhotoGallery/>
       
       <Services/>
+      <ContactSection/>
+      <LuxuryFooter/>
     </div>
   )
 }
